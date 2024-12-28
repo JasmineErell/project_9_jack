@@ -1,0 +1,168 @@
+/** Displays a start screen for Tic Tac Toe using pixels to render text. */
+class StartScreen {
+    field int startX; // Starting X position for the text
+    field int startY; // Starting Y position for the text
+
+    /** Constructor to initialize the starting position of the text. */
+    constructor StartScreen new(int x, int y) {
+        let startX = x;
+        let startY = y;
+        return this;
+    }
+
+    /** Clears the screen and displays the start screen message. */
+    function void display(int startX, int startY) {
+        do Screen.clearScreen(); // Clear the screen
+        do Screen.setColor(true); // Set color to black
+
+        // Draw "Ready to play TIC TAC TOE?"
+        do drawText(10, 50, "Ready to play TIC TAC TOE?");
+        // Draw "Choose who starts - press X for X to start or press C for Circle to start"
+        do drawText(10, 70, "Choose who starts - press X for X to start or press C for Circle to start");
+
+        return;
+    }
+
+    /** Draws text at a given screen position using pixels. */
+    method void drawText(int startX, int startY, String text) {
+        var int i;
+        var char c;
+        var int currentX;
+
+        let i = 0;
+        let currentX = startX;
+
+        while (i < text.length()) {
+            let c = text.charAt(i);
+            do drawChar(currentX, startY, c);
+            let currentX = currentX + 8; // Move to the next character space
+            let i = i + 1;
+        }
+
+        return;
+    }
+
+    /** Draws a single character at (x, y) using pixels. */
+    method void drawChar(int x, int y, char c) {
+        if (c = 82) { do drawR(x, y); } // ASCII 'R'
+        if (c = 101) { do drawE(x, y); } // ASCII 'e'
+        if (c = 97) { do drawA(x, y); } // ASCII 'a'
+        if (c = 100) { do drawD(x, y); } // ASCII 'd'
+        if (c = 121) { do drawY(x, y); } // ASCII 'y'
+        if (c = 84) { do drawT(x, y); } // ASCII 'T'
+        if (c = 73) { do drawI(x, y); } // ASCII 'I'
+        if (c = 67) { do drawC(x, y); } // ASCII 'C'
+        if (c = 32) { /* Do nothing for space */ }
+        return;
+    }
+
+    /** Draws the letter D using pixels. */
+    method void drawD(int x, int y) {
+        do Screen.drawPixel(x, y);
+        do Screen.drawPixel(x, y+1);
+        do Screen.drawPixel(x, y+2);
+        do Screen.drawPixel(x, y+3);
+        do Screen.drawPixel(x+1, y);
+        do Screen.drawPixel(x+1, y+3);
+        do Screen.drawPixel(x+2, y+1);
+        do Screen.drawPixel(x+2, y+2);
+        return;
+    }
+
+     /** Draws the letter Y using pixels. */
+    method void drawY(int x, int y) {
+        do Screen.drawPixel(x, y);
+        do Screen.drawPixel(x+2, y);
+        do Screen.drawPixel(x+1, y+1);
+        do Screen.drawPixel(x+1, y+2);
+        do Screen.drawPixel(x+1, y+3);
+        return;
+    }
+        /** Draws the letter I using pixels. */
+    method void drawI(int x, int y) {
+        do Screen.drawPixel(x+1, y);    // Top pixel
+        do Screen.drawPixel(x+1, y+1);  // Middle pixel
+        do Screen.drawPixel(x+1, y+2);  // Lower middle pixel
+        do Screen.drawPixel(x+1, y+3);  // Bottom pixel
+        return;
+    }
+
+    /** Draws the letter C using pixels. */
+method void drawC(int x, int y) {
+    do Screen.drawPixel(x, y);     // Top-left corner
+    do Screen.drawPixel(x+1, y);   // Top-middle
+    do Screen.drawPixel(x+2, y);   // Top-right
+    do Screen.drawPixel(x, y+1);   // Middle-left
+    do Screen.drawPixel(x, y+2);   // Lower-middle-left
+    do Screen.drawPixel(x, y+3);   // Bottom-left
+    do Screen.drawPixel(x+1, y+3); // Bottom-middle
+    do Screen.drawPixel(x+2, y+3); // Bottom-right
+    return;
+}
+
+    /** Draws the letter R using pixels. */
+    method void drawR(int x, int y) {
+        do Screen.drawPixel(x, y);
+        do Screen.drawPixel(x, y+1);
+        do Screen.drawPixel(x, y+2);
+        do Screen.drawPixel(x+1, y);
+        do Screen.drawPixel(x+1, y+1);
+        do Screen.drawPixel(x+1, y+2);
+        do Screen.drawPixel(x+2, y+1);
+        do Screen.drawPixel(x+2, y+2);
+        do Screen.drawPixel(x+1, y+3);
+        do Screen.drawPixel(x+2, y+4);
+        return;
+    }
+
+    /** Draws the letter E using pixels. */
+    method void drawE(int x, int y) {
+        do Screen.drawPixel(x, y);
+        do Screen.drawPixel(x, y+1);
+        do Screen.drawPixel(x, y+2);
+        do Screen.drawPixel(x, y+3);
+        do Screen.drawPixel(x+1, y);
+        do Screen.drawPixel(x+1, y+2);
+        do Screen.drawPixel(x+1, y+3);
+        do Screen.drawPixel(x+2, y);
+        do Screen.drawPixel(x+2, y+3);
+        return;
+    }
+
+    /** Draws the letter A using pixels. */
+    method void drawA(int x, int y) {
+        do Screen.drawPixel(x+1, y);
+        do Screen.drawPixel(x, y+1);
+        do Screen.drawPixel(x+2, y+1);
+        do Screen.drawPixel(x, y+2);
+        do Screen.drawPixel(x+1, y+2);
+        do Screen.drawPixel(x+2, y+2);
+        do Screen.drawPixel(x, y+3);
+        do Screen.drawPixel(x+2, y+3);
+        return;
+    }
+
+    /** Draws the letter T using pixels. */
+    method void drawT(int x, int y) {
+        do Screen.drawPixel(x, y);
+        do Screen.drawPixel(x+1, y);
+        do Screen.drawPixel(x+2, y);
+        do Screen.drawPixel(x+1, y+1);
+        do Screen.drawPixel(x+1, y+2);
+        do Screen.drawPixel(x+1, y+3);
+        return;
+    }
+
+    /** Draws a space character (does nothing). */
+    method void drawSpace(int x, int y) {
+        return;
+    }
+
+    /** Draws a placeholder for unsupported characters. */
+    method void drawUnknown(int x, int y) {
+        do Screen.drawPixel(x, y);
+        do Screen.drawPixel(x+1, y+1);
+        do Screen.drawPixel(x+2, y+2);
+        return;
+    }
+}

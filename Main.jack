@@ -1,9 +1,15 @@
-/** Initializes a new Circle . */
+/** Initializes a new Circle and X. */
 class Main {
     function void main() {
         var Circle circle;
+        var X xShape;
+
         let circle = Circle.new(100, 100, 50);
         do circle.draw();
+
+        let xShape = X.new(200, 200, 50);
+        do xShape.draw();
+
         return;
     }
 }

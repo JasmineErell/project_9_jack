@@ -1,0 +1,31 @@
+/** Implements a graphical X drawn on the screen using lines. */
+class X {
+   field int x, y; // screen location of the center of the X
+   field int size; // size (half the length of each line in the X)
+
+   /** Constructs and draws a new X with a given center location and size. */
+   constructor X new(int ax, int ay, int asize) {
+      let x = ax;
+      let y = ay;
+      let size = asize;
+      do draw();
+      return this;
+   }
+
+   /** Draws this X in its current (x,y) location. */
+   method void draw() {
+      // Draw two diagonal lines to form an X
+      do Screen.setColor(true);
+      // First diagonal line (\)
+      do Screen.drawLine(x - size, y - size, x + size, y + size);
+      // Second diagonal line (/)
+      do Screen.drawLine(x - size, y + size, x + size, y - size);
+      return;
+   }
+
+   /** Disposes this X. */
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+}

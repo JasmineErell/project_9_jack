@@ -1,0 +1,9 @@
+/** Initializes a new Circle . */
+class Main {
+    function void main() {
+        var Circle circle;
+        let circle = Circle.new(100,100,50);
+        do circle.draw();
+        return;
+    }
+}

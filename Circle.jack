@@ -1,0 +1,31 @@
+/** Implements a graphical grid (for playing on), X and a circle, line (for winning)
+
+class Circle {
+   field int x, y; // screen location of the top of the circle (90 degrees from the center of the circle)
+   field int size; // radius of the circle
+
+   /** Constructs and draws a new circle with a given location and radius. */
+   constructor circle new(int ax, int ay, int rsize) {
+      let x = ax;
+      let y = ay;
+      let size = rsize;
+      do draw();
+      return this;
+   }
+
+   /** Draws this circle in its current (x,y) location */
+   method void draw() {
+      // Draws the circle using the color black
+      do Screen.setColor(true);
+      do Screen.drawCircle(x, y, rsize);
+      return;
+   }
+
+   /** Disposes this circle. */
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+
+{

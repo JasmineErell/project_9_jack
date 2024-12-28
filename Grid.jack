@@ -12,13 +12,14 @@ class Grid {
         return this;
     }
 
-     /** Draws the 3x3 grid. */
+    /** Draws the 3x3 grid. */
     method void draw() {
         var int i, row, col;
         var int startX, startY, endX, endY;
         var int number;
 
-        do Screen.setColor(true) ; // Set drawing color to black
+        do Screen.setColor(true); // Set drawing color to black
+
         // Draw vertical lines
         let i = 0;
         while (i < 4) {
@@ -41,7 +42,7 @@ class Grid {
             let i = i + 1;
         }
 
-         // Draw numbers using Output API
+        // Draw numbers using Output API
         let number = 1; // Start numbering from 1
         let row = 0;
         while (row < 3) {
@@ -52,32 +53,28 @@ class Grid {
                 let col = col + 1;
             }
             let row = row + 1;
-         }
-
-            return;
         }
+
+        return;
+    }
 
     /** Writes a number in the center of a grid cell using Output API. */
     method void writeNumber(int row, int col, int number) {
         var int cursorRow, cursorCol;
 
         // Calculate cursor position based on grid coordinates
-        let cursorRow = (y / 11) + (row * (cellSize / 11)) + 1; // Approx row in Output grid
-        let cursorCol = (x / 8) + (col * (cellSize / 8)) + 2;   // Approx col in Output grid
+        let cursorRow = ((y + (row * cellSize) + (cellSize / 2)) / 11); // Align to row grid
+        let cursorCol = ((x + (col * cellSize) + (cellSize / 2)) / 8);  // Align to column grid
 
         do Output.moveCursor(cursorRow, cursorCol);
         do Output.printInt(number);
 
         return;
     }
-      /** Releases the grid object from memory. */
+
+    /** Releases the grid object from memory. */
     method void dispose() {
         do Memory.deAlloc(this);
         return;
     }
 }
-
-
-
-    
-

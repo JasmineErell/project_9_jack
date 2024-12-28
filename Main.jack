@@ -1,11 +1,8 @@
-/** Main program to display only the Grid. */
+/** Main program to display the StartScreen. */
 class Main {
     function void main() {
-        var Grid grid; // Declare a Grid object
-
-        // Create a 3x3 grid centered on the screen with cell size 50
-        let grid = Grid.new(50);
-        do grid.draw();
+        // Directly call StartScreen.display as a class-level function
+        do StartScreen.display();
 
         return;
     }

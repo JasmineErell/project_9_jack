@@ -1,7 +1,6 @@
-/** Main program to display the StartScreen. */
+/** Main program to display the StartScreen and set a choice. */
 class Main {
     function void main() {
-        // Directly call StartScreen.display as a class-level function
         do StartScreen.display();
 
         return;

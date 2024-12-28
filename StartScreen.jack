@@ -1,34 +1,86 @@
-/** Displays a start screen for Tic Tac Toe using the Output API. */
+/** Displays a start screen for Tic Tac Toe using the Output and Keyboard APIs. */
 class StartScreen {
+    field char chosenPlayer; // Stores the selected player: 'X' or 'O'
 
     /** Displays the start screen message using the Output API. */
     function void display() {
         do Screen.clearScreen(); // Clear the screen
 
         // Title Line
-        do Output.moveCursor(4, 20); // Move cursor to Row 4, Column 20
+        do Output.moveCursor(4, 20); // Row 4, Column 20
         do Output.printString("=== TIC TAC TOE ===");
 
-        // Instruction 1
-        do Output.moveCursor(6, 15); // Move cursor to Row 6, Column 15
+        // Instructions
+        do Output.moveCursor(6, 15); // Row 6, Column 15
         do Output.printString("Ready to play TIC TAC TOE?");
 
-        // Instruction 2
-        do Output.moveCursor(8, 15); // Move cursor to Row 8, Column 15
+        do Output.moveCursor(8, 15); // Row 8, Column 15
         do Output.printString("Choose who starts:");
 
-        // Instruction 3
-        do Output.moveCursor(10, 15); // Move cursor to Row 10, Column 15
+        do Output.moveCursor(10, 15); // Row 10, Column 15
         do Output.printString("Press X for X to start");
 
-        // Instruction 4
-        do Output.moveCursor(12, 15); // Move cursor to Row 12, Column 15
-        do Output.printString("Press C for O to start");
+        do Output.moveCursor(12, 15); // Row 12, Column 15
+        do Output.printString("Press C for Circle to start");
 
-        // Final Message
-        do Output.moveCursor(14, 15); // Move cursor to Row 14, Column 15
-        do Output.printString("Have Fun!");
+        // Wait for User Input
+        do waitForChoice();
+        return;
+    }
+
+    /** Waits for the user to press 'X' or 'C' and stores the choice. */
+    method void waitForChoice() {
+        var char key;
+
+        while (true) {
+            let key = Keyboard.keyPressed(); // Wait for key press
+
+            // Check for uppercase X
+            if (key = 88) { // ASCII for 'X'
+                let chosenPlayer = 88; // Store 'X'
+                // Display chosen value
+                do Output.moveCursor(14, 15);
+                do Output.printString("Player chosen: ");
+                do Output.printChar(chosenPlayer);
+                return;
+            }
+
+            // Check for lowercase x
+            if (key = 120) { // ASCII for 'x'
+                let chosenPlayer = 88; // Store 'X'
+                // Display chosen value
+                do Output.moveCursor(14, 15);
+                do Output.printString("Player chosen: ");
+                do Output.printChar(chosenPlayer);
+                return;
+            }
+
+            // Check for uppercase C
+            if (key = 67) { // ASCII for 'C'
+                let chosenPlayer = 79; // Store 'O'
+                // Display chosen value
+                do Output.moveCursor(14, 15);
+                do Output.printString("Player chosen: ");
+                do Output.printChar(chosenPlayer);
+                return;
+            }
+
+            // Check for lowercase c
+            if (key = 99) { // ASCII for 'c'
+                let chosenPlayer = 79; // Store 'O'
+                // Display chosen value
+                do Output.moveCursor(14, 15);
+                do Output.printString("Player chosen: ");
+                do Output.printChar(chosenPlayer);
+                return;
+            }
+        }
 
         return;
+    }
+
+    /** Retrieves the stored player's choice. */
+    method char getChoice() {
+        return chosenPlayer;
     }
 }

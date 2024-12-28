@@ -26,6 +26,4 @@ class Circle {
       do Memory.deAlloc(this);
       return;
    }
-
-
-{
+}

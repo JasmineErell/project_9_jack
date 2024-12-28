@@ -1,0 +1,52 @@
+/** Implements a 3x3 grid centered on the Hack screen (512x256 pixels). */
+class Grid {
+    field int x, y;      // Top-left corner of the grid
+    field int cellSize;  // Size of each cell in the grid
+
+    /** Constructs and draws a new grid centered on the screen. */
+    constructor Grid new(int aCellSize) {
+        let cellSize = aCellSize;
+        let x = (512 / 2) - (3 * cellSize / 2); // Center horizontally
+        let y = (256 / 2) - (3 * cellSize / 2); // Center vertically
+        do draw();
+        return this;
+    }
+
+     /** Draws the 3x3 grid. */
+    method void draw() {
+        var int i;
+        var int startX, startY, endX, endY;
+
+        do Screen.setColor(true); // Set drawing color to black
+        // Draw vertical lines
+        let i = 0;
+        while (i < 4) {
+            let startX = x + (i * cellSize);
+            let startY = y;
+            let endX = startX;
+            let endY = y + (3 * cellSize);
+            do Screen.drawLine(startX, startY, endX, endY);
+            let i = i + 1;
+        }
+
+        // Draw horizontal lines
+        let i = 0;
+        while (i < 4) {
+            let startX = x;
+            let startY = y + (i * cellSize);
+            let endX = x + (3 * cellSize);
+            let endY = startY;
+            do Screen.drawLine(startX, startY, endX, endY);
+            let i = i + 1;
+        }
+
+        return;
+        }
+    /** Disposes this grid. */
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    
+}

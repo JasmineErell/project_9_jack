@@ -1,14 +1,18 @@
-/** Initializes a new Circle and X. */
+/** Initializes a new Circle, X, and Grid. */
 class Main {
     function void main() {
         var Circle circle;
         var X xShape;
+        var Grid grid;
 
         let circle = Circle.new(100, 100, 50);
         do circle.draw();
 
         let xShape = X.new(200, 200, 50);
         do xShape.draw();
+
+        let grid = Grid.new(50); // Each cell is 50x50 pixels
+        do grid.draw();
 
         return;
     }

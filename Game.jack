@@ -35,6 +35,30 @@ class Game {
         return;
     }
 
+    /** Handles a player's turn assuming valid input */
+    method void playerTurn(char player) {
+        var char key;
+        var int cell;
+
+        // Display the player prompt
+        do Output.moveCursor(20, 0); // Below the grid
+        do Output.printString("Player ");
+        do Output.printChar(player);
+        do Output.printString(", press a key (1-9) to choose a cell ");
+        do Output.println();
+
+        // Wait for a key press and convert to cell number
+        while (key = 0) {
+            let key = Keyboard.keyPressed();
+        }
+        let cell = key - 48; // Convert ASCII digit to integer (e.g., '1' -> 1)
+
+        // Call turn directly
+        do turn(player, cell);
+
+        return;
+    }
+
 }
 
 

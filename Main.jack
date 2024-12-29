@@ -2,15 +2,12 @@ class Main {
     function void main() {
         var Game game;
 
-        // Step 1: Initialize the game
+        // Initialize the game
         let game = Game.new();
 
-        // Step 2: Draw symbols directly in specific cells
-        do game.turn(88, 1); // Draw 'X' in cell 1
-        do game.turn(79, 3); // Draw 'O' in cell 3
-        do game.turn(88, 5); // Draw 'X' in cell 5
-        do game.turn(79, 7); // Draw 'O' in cell 7
-        do game.turn(88, 9); // Draw 'X' in cell 9
+        // Simulate two player turns
+        do game.playerTurn(88); // Player X takes a turn
+
 
         return;
     }

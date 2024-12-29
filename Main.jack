@@ -1,20 +1,16 @@
 class Main {
     function void main() {
-        var Grid grid;
-        var X xSymbol;
-        var int cellX, cellY;
-        var int cellSize;
+        var Game game;
 
-        // Create a Grid object with a cell size of 20
-        let grid = Grid.new(20);
+        // Step 1: Initialize the game
+        let game = Game.new();
 
-        // Call the methods on the grid object
-        let cellX = grid.getXValue(5); // Retrieve X coordinate
-        let cellY = grid.getYValue(5); // Retrieve Y coordinate
-        let cellSize = 20;
-
-        // Create an X at the calculated coordinates
-        let xSymbol = X.new(cellX - (cellSize / 2), cellY - (cellSize / 2), cellSize);
+        // Step 2: Draw symbols directly in specific cells
+        do game.turn(88, 1); // Draw 'X' in cell 1
+        do game.turn(79, 3); // Draw 'O' in cell 3
+        do game.turn(88, 5); // Draw 'X' in cell 5
+        do game.turn(79, 7); // Draw 'O' in cell 7
+        do game.turn(88, 9); // Draw 'X' in cell 9
 
         return;
     }

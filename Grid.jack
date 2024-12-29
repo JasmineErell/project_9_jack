@@ -103,6 +103,25 @@ class Grid {
         return centerY;
     }
 
+    /** Clears the number or text inside a specific cell (1-9). */
+    method void clearCell(int number) {
+        var int row, col;
+        var int cursorRow, cursorCol;
+
+        // Calculate row and column from the cell number
+        let row = (number - 1) / 3;
+        let col = (number - 1) - (row * 3);
+
+        // Calculate cursor position based on grid coordinates
+        let cursorRow = ((y + (row * cellSize) + (cellSize / 2)) / 11); // Align to row grid
+        let cursorCol = ((x + (col * cellSize) + (cellSize / 2)) / 8);  // Align to column grid
+
+        // Move cursor and print spaces to clear the cell
+        do Output.moveCursor(cursorRow, cursorCol);
+        do Output.printString("   "); // Print 3 spaces to overwrite the number
+
+        return;
+    }
 
     /** Releases the grid object from memory. */
     method void dispose() {

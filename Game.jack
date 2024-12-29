@@ -1,41 +1,40 @@
 class Game {
 
-    field Array row1, row2, row3;
     field Grid grid;
+    field X xSymbol;
+    field Circle circleSymbol;
+
     //Start the game with an empty grid
       constructor Game new() {
-        var int i;
-
-        let row1 = Array.new(3);
-        let row2 = Array.new(3);
-        let row3 = Array.new(3);
-
-        let i = 0;
-        while (i < 3) {
-            let row1[i] = 0;
-            let row2[i] = 0;
-            let row3[i] = 0;
-            let i = i + 1;
-        }
-
+        let grid = Grid.new(20); // Assuming cell size is 20
+        let xSymbol = X.new(-1, -1, 20);
+        let circleSymbol = Circle.new(-1, -1, 20);
         return this;
     }
+    
+    /** Draw a symbol directly in a specified cell */
+    method void turn(char player, int cell) {
+        var int centerX, centerY;
 
+        // Step 1: Get grid center coordinates for the given cell
+        let centerX = grid.getXValue(cell);
+        let centerY = grid.getYValue(cell);
 
-
-
-
-     // Getter method to retrieve row values
-    method int getRowValue(int row, int index) {
-        if (row = 1) {
-            return row1[index];
+        // Step 2: Draw the symbol directly on the grid
+        if (player = 88) { // ASCII for 'X'
+            do xSymbol.dispose();
+            let xSymbol = X.new(centerX - 10, centerY - 10, 20);
+            do xSymbol.draw();
+        } else {
+            do circleSymbol.dispose();
+            let circleSymbol = Circle.new(centerX - 10, centerY - 10, 20);
+            do circleSymbol.draw();
         }
-        if (row = 2) {
-            return row2[index];
-        }
-        if (row = 3) {
-            return row3[index];
-        }
-        return -1; // Invalid input
+
+        return;
     }
+
 }
+
+
+

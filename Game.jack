@@ -21,6 +21,7 @@ class Game {
         let centerY = grid.getYValue(cell);
 
         // Step 2: Draw the symbol directly on the grid
+        do grid.clearCell(cell);
         if (player = 88) { // ASCII for 'X'
             do xSymbol.dispose();
             let xSymbol = X.new(centerX - 10, centerY - 10, 20);

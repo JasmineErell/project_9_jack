@@ -118,7 +118,7 @@ class Grid {
 
         // Move cursor and print spaces to clear the cell
         do Output.moveCursor(cursorRow, cursorCol);
-        do Output.printString("   "); // Print 3 spaces to overwrite the number
+        do Output.printString(" "); // Print 3 spaces to overwrite the number
 
         return;
     }

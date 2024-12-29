@@ -72,6 +72,38 @@ class Grid {
         return;
     }
 
+
+    /** Grid cursor - a function that gets a value on the grid (from 1-9) and returns the x and y values of its middle (to draw on it later). */
+
+    method int getXValue(int number) {
+        var int row, col;
+        var int centerX;
+
+        // Calculate row and column
+        let row = (number - 1) / 3; // Integer division
+        let col = (number - 1) - (row * 3); // Column without modulo
+
+        // Calculate center X coordinate
+        let centerX = x + (col * cellSize) + (cellSize / 2);
+
+        return centerX;
+    }
+
+    /** Returns the y-coordinate of a cell given its number (1-9). */
+    method int getYValue(int number) {
+        var int row;
+        var int centerY;
+
+        // Calculate row
+        let row = (number - 1) / 3;
+
+        // Calculate center Y coordinate
+        let centerY = y + (row * cellSize) + (cellSize / 2);
+
+        return centerY;
+    }
+
+
     /** Releases the grid object from memory. */
     method void dispose() {
         do Memory.deAlloc(this);

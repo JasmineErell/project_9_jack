@@ -1,7 +1,20 @@
-/** Main program to display the StartScreen and set a choice. */
 class Main {
     function void main() {
-        do StartScreen.display();
+        var Grid grid;
+        var X xSymbol;
+        var int cellX, cellY;
+        var int cellSize;
+
+        // Create a Grid object with a cell size of 20
+        let grid = Grid.new(20);
+
+        // Call the methods on the grid object
+        let cellX = grid.getXValue(5); // Retrieve X coordinate
+        let cellY = grid.getYValue(5); // Retrieve Y coordinate
+        let cellSize = 20;
+
+        // Create an X at the calculated coordinates
+        let xSymbol = X.new(cellX - (cellSize / 2), cellY - (cellSize / 2), cellSize);
 
         return;
     }

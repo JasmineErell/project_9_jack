@@ -3,12 +3,11 @@ class Grid {
     field int x, y;      // Top-left corner of the grid
     field int cellSize;  // Size of each cell in the grid
 
-    /** Constructs and draws a new grid centered on the screen. */
+    /** Constructs a new grid centered on the screen. */
     constructor Grid new(int aCellSize) {
         let cellSize = aCellSize;
         let x = (512 / 2) - (3 * cellSize / 2); // Center horizontally
         let y = (256 / 2) - (3 * cellSize / 2); // Center vertically
-        do draw();
         return this;
     }
 
@@ -72,9 +71,7 @@ class Grid {
         return;
     }
 
-
-    /** Grid cursor - a function that gets a value on the grid (from 1-9) and returns the x and y values of its middle (to draw on it later). */
-
+    /** Grid cursor - a function that gets a value on the grid (from 1-9) and returns the x value. */
     method int getXValue(int number) {
         var int row, col;
         var int centerX;
@@ -118,7 +115,7 @@ class Grid {
 
         // Move cursor and print spaces to clear the cell
         do Output.moveCursor(cursorRow, cursorCol);
-        do Output.printString(" "); // Print 3 spaces to overwrite the number
+        do Output.printString(" "); // Print space to overwrite the number
 
         return;
     }

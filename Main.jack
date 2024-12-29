@@ -5,9 +5,8 @@ class Main {
         // Initialize the game
         let game = Game.new();
 
-        // Simulate two player turns
-        do game.playerTurn(88); // Player X takes a turn
-
+        // Start the game - this will handle all turns
+        do game.run();
 
         return;
     }

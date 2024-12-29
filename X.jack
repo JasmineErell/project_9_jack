@@ -8,7 +8,6 @@ class X {
       let x = ax + (cellSize / 2); // Center horizontally within the cell
       let y = ay + (cellSize / 2); // Center vertically within the cell
       let size = (cellSize / 2) - 2; // Slight padding for the X
-      do draw();
       return this;
    }
 
